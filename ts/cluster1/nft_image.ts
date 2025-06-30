@@ -3,6 +3,7 @@ import { createUmi } from "@metaplex-foundation/umi-bundle-defaults"
 import { createGenericFile, createSignerFromKeypair, signerIdentity } from "@metaplex-foundation/umi"
 import { irysUploader } from "@metaplex-foundation/umi-uploader-irys"
 import { readFile } from "fs/promises"
+import path from "path"
 
 // Create a devnet connection
 const umi = createUmi('https://api.devnet.solana.com');
@@ -16,7 +17,8 @@ umi.use(signerIdentity(signer));
 (async () => {
     try {
         //1. Load image
-        const nftImage = await readFile('/Users/shubbu/DEV/solana-starter/ts/cluster1/images/img1.jpg');
+        const filePath = path.join(__dirname, "..", "cluster1", "images", "img1.jpg")
+        const nftImage = await readFile(filePath);
 
         //2. Convert image to generic file.
         const genericImg = createGenericFile(nftImage, "best-nft");
