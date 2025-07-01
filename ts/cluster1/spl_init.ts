@@ -13,6 +13,7 @@ const connection = new Connection("https://api.devnet.solana.com", commitment);
     try {
         // Start here
         console.log("Pubkey:\n",keypair.publicKey)
+        //pubkey - EcgxCCyx5YrFTN6WeQ9ioX6CGZVgWsbyXxzNSAZDzdVT
         const mint = await createMint(connection,keypair,keypair.publicKey,keypair.publicKey,6);
         console.log("Created mint is:", mint)
     } catch(error) {
